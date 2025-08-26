@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download Figma Images</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #00ff00;
+        }
+        .image-container {
+            margin: 20px 0;
+            border: 1px solid #00ff00;
+            padding: 10px;
+        }
+        img {
+            max-width: 200px;
+            display: block;
+            margin: 10px 0;
+        }
+        .info {
+            color: #00ff00;
+            margin: 5px 0;
+        }
+        h2 {
+            color: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <h1>Figma Paper Lanterns Images</h1>
+    <p>These are the actual images from the Figma design. Right-click and save each image:</p>
+    
+    <div class="image-container">
+        <h2>1. Main Lantern (with face)</h2>
+        <div class="info">Filename: lantern-face.png</div>
+        <div class="info">Used in: Header and Gallery</div>
+        <img src="http://localhost:3845/assets/c06677fc746a48595e0cb79435ab14337fe3003e.png" alt="Lantern with face">
+    </div>
+    
+    <div class="image-container">
+        <h2>2. Badge (Feb 17, 6-9PM)</h2>
+        <div class="info">Filename: badge.png</div>
+        <div class="info">Used in: Header overlay</div>
+        <img src="http://localhost:3845/assets/0a0aecfb733103c5d1ad09b66b55adf71c94c786.png" alt="Event badge">
+    </div>
+    
+    <div class="image-container">
+        <h2>3. Crowd Scene (woodblock print style)</h2>
+        <div class="info">Filename: crowd-scene.png</div>
+        <div class="info">Used in: Feature image section</div>
+        <img src="http://localhost:3845/assets/cb8e0b11ff518542f725fce25f5ba8e1205fbdf4.png" alt="Crowd watching fireworks">
+    </div>
+    
+    <div class="image-container">
+        <h2>4. Lantern with Moon</h2>
+        <div class="info">Filename: lantern-moon.png</div>
+        <div class="info">Used in: Gallery</div>
+        <img src="http://localhost:3845/assets/fecaf620dee2ee30dc48ec6d6aa2f81d24b667b3.png" alt="Lantern with moon">
+    </div>
+    
+    <div class="image-container">
+        <h2>5. Lantern with Landscape</h2>
+        <div class="info">Filename: lantern-landscape.png</div>
+        <div class="info">Used in: Gallery</div>
+        <img src="http://localhost:3845/assets/d33c2d244ed07c2820450d2c4e562c63be3719c7.png" alt="Lantern with landscape">
+    </div>
+    
+    <div class="image-container">
+        <h2>6. Multiple Lanterns Scene</h2>
+        <div class="info">Filename: lanterns-hanging.png</div>
+        <div class="info">Used in: About section</div>
+        <img src="http://localhost:3845/assets/3cc28e8c67315fe2c34bcb5287f1adb8feffb6fe.png" alt="Multiple hanging lanterns">
+    </div>
+    
+    <div class="image-container">
+        <h2>SVG Assets:</h2>
+        <ul>
+            <li>Paper Lanterns Logo: <code>0ad5f97f92fbc9ffc394f8e2d329620e9eb9556d.svg</code></li>
+            <li>Star divider: <code>1feaf163e807d491585dcaf98bb670e85d6dfb5b.svg</code></li>
+            <li>Facebook icon: <code>92d89818cf397c78bfc96d5535e8e3964ce02dff.svg</code></li>
+            <li>Instagram icon: <code>23d7e02a21bfa97b281bbf7f0bb388315034c48d.svg</code></li>
+            <li>TikTok icon: <code>415ad6468f9455aab5df4ca7189c4b21b20f7770.svg</code></li>
+            <li>YouTube icon: <code>68bd92fcf9ba040401986f7c8af97d16bad928a2.svg</code></li>
+            <li>Footer wordmark: <code>bd667d23ddcdcbab9ce961fa459c55f5cd46a30b.svg</code></li>
+        </ul>
+    </div>
+    
+    <script>
+        // Note: These are localhost URLs from Figma's dev mode
+        // In production, these would need to be downloaded and hosted locally
+        const images = [
+            'http://localhost:3845/assets/c06677fc746a48595e0cb79435ab14337fe3003e.png',
+            'http://localhost:3845/assets/0a0aecfb733103c5d1ad09b66b55adf71c94c786.png',
+            'http://localhost:3845/assets/cb8e0b11ff518542f725fce25f5ba8e1205fbdf4.png',
+            'http://localhost:3845/assets/fecaf620dee2ee30dc48ec6d6aa2f81d24b667b3.png',
+            'http://localhost:3845/assets/d33c2d244ed07c2820450d2c4e562c63be3719c7.png',
+            'http://localhost:3845/assets/3cc28e8c67315fe2c34bcb5287f1adb8feffb6fe.png'
+        ];
+        
+        console.log('Figma image assets:', images);
+    </script>
+</body>
+</html>

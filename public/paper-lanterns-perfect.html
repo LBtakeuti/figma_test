@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ペーパーランタン - 第33回ランタンフェスティバル</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700;900&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Figmaのデザイン変数を完全に再現 */
+        :root {
+            --text-link: #FBEAD6;
+            --accent-1: #2C2C2C;
+            --text-captions: #717171;
+            --text-body: #2C2C2C;
+            --text-headline: #2C2C2C;
+            --accent-on-1: #FBEAD6;
+            --background-2: #7AA4AD;
+            --background-1: #FBEAD6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-1);
+            color: var(--text-body);
+            overflow-x: hidden;
+        }
+
+        .container {
+            background-color: var(--background-1);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Navigation - Figmaデザイン通り */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 30px;
+            height: 138px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        nav a {
+            background-color: var(--accent-1);
+            color: var(--text-link);
+            padding: 6px 15px;
+            text-decoration: none;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        nav a span {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 45px;
+            text-transform: uppercase;
+            letter-spacing: -0.45px;
+            line-height: 1.2;
+        }
+
+        /* Header Section */
+        .header-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 300px;
+            height: 640px;
+            position: relative;
+            width: 100%;
+        }
+
+        .lantern-main-image {
+            width: 640px;
+            height: 640px;
+            background: url('http://localhost:3845/assets/c06677fc746a48595e0cb79435ab14337fe3003e.png') center/cover no-repeat;
+            border-radius: 50%;
+        }
+
+        .event-badge {
+            position: absolute;
+            bottom: -24.5px;
+            right: 188.5px;
+            width: 197.5px;
+            height: 197.5px;
+            background: url('http://localhost:3845/assets/0a0aecfb733103c5d1ad09b66b55adf71c94c786.png') center/contain no-repeat;
+        }
+
+        /* Wordmark */
+        .wordmark-section {
+            padding: 40px 50px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .wordmark-title {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 140px;
+            text-transform: uppercase;
+            color: var(--accent-1);
+            letter-spacing: -4px;
+            line-height: 0.85;
+        }
+
+        .wordmark-svg {
+            width: 100%;
+            max-width: 1500px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Intro Section */
+        .intro-section {
+            text-align: center;
+            padding: 46px 40px 126px;
+        }
+
+        .intro-caption {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-captions);
+            line-height: 1.5;
+            margin-bottom: 40px;
+        }
+
+        .intro-text {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 30px;
+            color: var(--text-body);
+            letter-spacing: -0.3px;
+            line-height: 1.3;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Feature Image */
+        .feature-image-section {
+            padding: 0 40px;
+            margin-bottom: 40px;
+        }
+
+        .feature-image-container {
+            height: 750px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: url('http://localhost:3845/assets/cb8e0b11ff518542f725fce25f5ba8e1205fbdf4.png') center/cover no-repeat;
+        }
+
+        /* Event Details */
+        .details-section {
+            text-align: center;
+            padding: 0 40px 150px;
+        }
+
+        .star-icon {
+            width: 30px;
+            height: 30px;
+            margin: 40px auto;
+            background: url('http://localhost:3845/assets/1feaf163e807d491585dcaf98bb670e85d6dfb5b.svg') center/contain no-repeat;
+        }
+
+        .details-heading {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            text-transform: uppercase;
+            color: var(--text-headline);
+            letter-spacing: -0.4px;
+            line-height: 1.2;
+            margin: 40px 0;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            display: flex;
+            gap: 16px;
+            padding: 0 40px;
+            overflow-x: auto;
+            margin-bottom: 60px;
+        }
+
+        .gallery-card {
+            flex-shrink: 0;
+            padding: 0 20px 50px;
+            text-align: center;
+        }
+
+        .gallery-img {
+            width: 540px;
+            height: 540px;
+            border-radius: 50%;
+            background-position: center;
+            background-size: cover;
+            margin-bottom: 50px;
+        }
+
+        .gallery-img-1 {
+            background-image: url('http://localhost:3845/assets/fecaf620dee2ee30dc48ec6d6aa2f81d24b667b3.png');
+        }
+
+        .gallery-img-2 {
+            background-image: url('http://localhost:3845/assets/c06677fc746a48595e0cb79435ab14337fe3003e.png');
+        }
+
+        .gallery-img-3 {
+            background-image: url('http://localhost:3845/assets/d33c2d244ed07c2820450d2c4e562c63be3719c7.png');
+            transform: rotate(180deg) scaleY(-1);
+        }
+
+        .gallery-img-4 {
+            background-image: url('http://localhost:3845/assets/fecaf620dee2ee30dc48ec6d6aa2f81d24b667b3.png');
+        }
+
+        .gallery-text {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--text-captions);
+            line-height: 1.5;
+        }
+
+        /* Agenda Section */
+        .agenda-section {
+            padding: 88px 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .agenda-wrapper {
+            max-width: 920px;
+            width: 100%;
+        }
+
+        .agenda-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .agenda-title {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            text-transform: uppercase;
+            color: var(--text-headline);
+            letter-spacing: -0.4px;
+            line-height: 1.2;
+            margin-top: 40px;
+        }
+
+        .agenda-entry {
+            display: flex;
+            gap: 128px;
+            padding: 20px 0;
+            border-top: 0.5px solid var(--accent-1);
+        }
+
+        .agenda-time {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .agenda-info {
+            flex: 1;
+        }
+
+        .agenda-info h4 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .agenda-info p {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 1.5;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 0 40px 78px;
+        }
+
+        .about-banner {
+            width: 100%;
+            aspect-ratio: 2;
+            border-radius: 10px;
+            background: url('http://localhost:3845/assets/3cc28e8c67315fe2c34bcb5287f1adb8feffb6fe.png') center/cover no-repeat;
+            margin-bottom: 80px;
+        }
+
+        .about-heading {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            text-transform: uppercase;
+            text-align: center;
+            color: var(--text-headline);
+            letter-spacing: -0.4px;
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+
+        .about-content {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 20px;
+            text-align: center;
+            line-height: 1.5;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        .footer-section {
+            background-color: var(--background-2);
+            padding: 40px;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1500px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .footer-info {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-col {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--accent-1);
+            line-height: 1.5;
+            width: 293px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        
+        .social-icon img {
+            height: 16px;
+            width: auto;
+            display: block;
+        }
+        
+        .social-icon.facebook img {
+            width: 8.76px;
+            height: 15.66px;
+        }
+        
+        .social-icon.instagram img {
+            width: 15px;
+            height: 15px;
+        }
+        
+        .social-icon.tiktok img {
+            width: 16.08px;
+            height: 16px;
+        }
+        
+        .social-icon.youtube img {
+            width: 17.72px;
+            height: 11.59px;
+        }
+
+        .footer-logo {
+            width: 100%;
+            max-width: 1500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .footer-logo img {
+            width: 100%;
+            height: auto;
+            max-width: 1200px;
+            aspect-ratio: 1200/290;
+            object-fit: contain;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .header-image-container {
+                padding: 0 100px;
+            }
+            
+            .event-badge {
+                right: 50px;
+            }
+            
+            .wordmark-title {
+                font-size: 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                height: auto;
+                gap: 10px;
+                align-items: center;
+            }
+            
+            nav a span {
+                font-size: 30px;
+            }
+            
+            .header-image-container {
+                padding: 0 20px;
+                height: 400px;
+            }
+            
+            .lantern-main-image {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .event-badge {
+                width: 120px;
+                height: 120px;
+                right: 20px;
+            }
+            
+            .wordmark-title {
+                font-size: 60px;
+            }
+            
+            .intro-text {
+                font-size: 24px;
+            }
+            
+            .details-heading {
+                font-size: 28px;
+            }
+            
+            .gallery-img {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .agenda-entry {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .footer-top {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .footer-section {
+                height: auto;
+            }
+            
+            .footer-logo {
+                font-size: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <a href="#"><span>クレスト中学校</span></a>
+            <a href="#"><span>お問い合わせ</span></a>
+        </nav>
+
+        <!-- Header -->
+        <header>
+            <div class="header-image-container">
+                <div class="lantern-main-image"></div>
+                <div class="event-badge"></div>
+            </div>
+            
+            <div class="wordmark-section">
+                <img src="http://localhost:3845/assets/0ad5f97f92fbc9ffc394f8e2d329620e9eb9556d.svg" alt="Paper Lanterns" class="wordmark-svg">
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Intro -->
+            <section class="intro-section">
+                <h2 class="intro-caption">第33回 ランタンフェスティバル</h2>
+                <p class="intro-text">光と創造性、そして伝統が融合し、文化と芸術の息をのむような祝祭で夜空を照らす、魅惑的なフェスティバルへご招待します。</p>
+            </section>
+
+            <!-- Feature Image -->
+            <div class="feature-image-section">
+                <div class="feature-image-container"></div>
+            </div>
+
+            <!-- Event Details -->
+            <section class="details-section">
+                <div class="star-icon"></div>
+                <h3 class="details-heading">
+                    2026年2月17日（火）<br>
+                    午後6:00 – 9:00
+                </h3>
+                
+                <div class="star-icon"></div>
+                <h3 class="details-heading">
+                    ウェストウッド・クレスト中学校<br>
+                    2415 キャンディランド・レーン、ロサンゼルス、CA 90025
+                </h3>
+                
+                <div class="star-icon"></div>
+                <h3 class="details-heading">
+                    ケータリング提供<br>
+                    ヘンリーズ湖南レストラン
+                </h3>
+            </section>
+
+            <!-- Gallery -->
+            <section class="gallery-section">
+                <div class="gallery-card">
+                    <div class="gallery-img gallery-img-1"></div>
+                    <div class="gallery-text">
+                        <p>アイテム: 005</p>
+                        <p>リートミュラー製紙ランタン工場</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-card">
+                    <div class="gallery-img gallery-img-2"></div>
+                    <div class="gallery-text">
+                        <p>アイテム: 001</p>
+                        <p>リートミュラー製紙ランタン工場</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-card">
+                    <div class="gallery-img gallery-img-3"></div>
+                    <div class="gallery-text">
+                        <p>アイテム: 002</p>
+                        <p>リートミュラー製紙ランタン工場</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-card">
+                    <div class="gallery-img gallery-img-4"></div>
+                    <div class="gallery-text">
+                        <p>アイテム: 005</p>
+                        <p>リートミュラー製紙ランタン工場</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agenda -->
+            <section class="agenda-section">
+                <div class="agenda-wrapper">
+                    <div class="agenda-header">
+                        <div class="star-icon"></div>
+                        <h2 class="agenda-title">フェスティバルプログラム</h2>
+                    </div>
+
+                    <div class="agenda-entry">
+                        <div class="agenda-time">午後5:30</div>
+                        <div class="agenda-info">
+                            <h4>到着</h4>
+                            <p>お迎えと集合。ランタンの点灯準備をしながら、雰囲気をお楽しみください。</p>
+                        </div>
+                    </div>
+
+                    <div class="agenda-entry">
+                        <div class="agenda-time">午後7:00</div>
+                        <div class="agenda-info">
+                            <h4>開会式</h4>
+                            <p>ガルデラ校長がフェスティバルの歴史と意義、特にペーパーランタンの文化的重要性について紹介します。</p>
+                        </div>
+                    </div>
+
+                    <div class="agenda-entry">
+                        <div class="agenda-time">午後7:30</div>
+                        <div class="agenda-info">
+                            <h4>ランタン点灯</h4>
+                            <p>ペーパーランタンの幻想的な点灯を体験してください。</p>
+                        </div>
+                    </div>
+
+                    <div class="agenda-entry">
+                        <div class="agenda-time">午後8:30</div>
+                        <div class="agenda-info">
+                            <h4>閉会</h4>
+                            <p>感謝の言葉と閉会の挨拶</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About -->
+            <section class="about-section">
+                <div class="about-banner"></div>
+                <h2 class="about-heading">ペーパーランタンフェスティバルについて</h2>
+                <div class="about-content">
+                    <p>1992年より、ウェストウッド・クレスト中学校は、学校コミュニティの伝統として愛されている「ペーパーランタン」イベントを誇りを持って開催しています。中国のランタンフェスティバルの豊かな歴史にインスピレーションを受け、私たちのイベントは、これらの輝く作品の美しさと象徴性を祝うシンプルな集まりとして始まりました。</p>
+                    <br>
+                    <p>年々、「ペーパーランタン」は生徒、スタッフ、家族にとって深く価値ある活気に満ちた祝祭へと成長しました。毎年、私たちはランタン作りの古代芸術と、それが表す深い意味―希望、喜び、そしてネガティブなものの放棄―を称えています。単なるフェスティバルを超えて、ウェストウッド・クレストの「ペーパーランタン」は、文化的認識、団結、そして共有される伝統の永続的な力の証です。</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer-section">
+            <div class="footer-top">
+                <div class="footer-info">
+                    <div class="footer-col">
+                        <p>ウェストウッド・クレスト中学校<br>
+                        2415 キャンディランド・レーン<br>
+                        ロサンゼルス、CA 90025</p>
+                    </div>
+                    <div class="footer-col">
+                        <p>ペーパーランタン © 2025<br>
+                        hello@figma.com<br>
+                        646.555.1234</p>
+                    </div>
+                </div>
+                
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/figmadesign/" class="social-icon facebook" aria-label="Link to Facebook">
+                        <img src="http://localhost:3845/assets/92d89818cf397c78bfc96d5535e8e3964ce02dff.svg" alt="Facebook">
+                    </a>
+                    <a href="https://www.instagram.com/figma/" class="social-icon instagram" aria-label="Link to Instagram">
+                        <img src="http://localhost:3845/assets/23d7e02a21bfa97b281bbf7f0bb388315034c48d.svg" alt="Instagram">
+                    </a>
+                    <a href="https://www.tiktok.com/@figma" class="social-icon tiktok" aria-label="Link to TikTok">
+                        <img src="http://localhost:3845/assets/415ad6468f9455aab5df4ca7189c4b21b20f7770.svg" alt="TikTok">
+                    </a>
+                    <a href="https://www.youtube.com/figmadesign" class="social-icon youtube" aria-label="Link to YouTube">
+                        <img src="http://localhost:3845/assets/68bd92fcf9ba040401986f7c8af97d16bad928a2.svg" alt="YouTube">
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-logo">
+                <img src="http://localhost:3845/assets/bd667d23ddcdcbab9ce961fa459c55f5cd46a30b.svg" alt="Paper Lanterns">
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
