@@ -3,212 +3,880 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paper Lanterns - 33rd Annual Lantern Festival</title>
+    <title>ペーパーランタン - 第33回ランタンフェスティバル</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700;900&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FBEAD6;
+            color: #2C2C2C;
+            width: 100%;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .desktop {
+            background-color: #FBEAD6;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+            justify-content: start;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Navigation */
+        nav {
+            box-sizing: border-box;
+            display: flex;
+            height: 138px;
+            align-items: start;
+            justify-content: space-between;
+            overflow: visible;
+            padding: 30px 30px 0;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        nav a {
+            background-color: #2C2C2C;
+            box-sizing: border-box;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+            padding: 6px 15px;
+            position: relative;
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+
+        nav a div {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            justify-content: center;
+            line-height: 0;
+            position: relative;
+            flex-shrink: 0;
+            color: #FBEAD6;
+            font-size: 45px;
+            white-space: nowrap;
+            letter-spacing: -0.45px;
+            text-transform: uppercase;
+        }
+
+        nav a p {
+            line-height: 1.2;
+            white-space: pre;
+        }
+
+        /* Header */
+        header {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: start;
+            justify-content: start;
+            overflow: visible;
+            padding: 0;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .header-image {
+            box-sizing: border-box;
+            display: flex;
+            gap: 10px;
+            height: 640px;
+            align-items: center;
+            justify-content: center;
+            padding: 0 300px;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .lantern-face {
+            background: url('./assets/c06677fc746a48595e0cb79435ab14337fe3003e.png') center/cover no-repeat;
+            flex-shrink: 0;
+            width: 640px;
+            height: 640px;
+            border-radius: 50%;
+        }
+
+        .badge {
+            position: absolute;
+            background: url('./assets/0a0aecfb733103c5d1ad09b66b55adf71c94c786.png') 0% 0% / 100% 100% no-repeat;
+            bottom: -24.5px;
+            right: 188.5px;
+            width: 197.5px;
+            height: 197.5px;
+        }
+
+        .wordmark {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            justify-content: start;
+            padding: 40px 50px;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .wordmark h1 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            line-height: 0;
+            opacity: 0;
+            position: relative;
+            flex-shrink: 0;
+            color: #2C2C2C;
+            font-size: 1px;
+            text-align: center;
+            letter-spacing: -0.01px;
+            text-transform: uppercase;
+            width: 100%;
+        }
+
+        .wordmark-svg {
+            aspect-ratio: 1180/210;
+            max-height: 266.949px;
+            max-width: 1500px;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .wordmark-svg img {
+            display: block;
+            max-width: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Main Content */
+        main {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: start;
+            justify-content: start;
+            overflow: visible;
+            padding: 0;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        /* Intro Section */
+        .intro {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 700;
+            gap: 40px;
+            align-items: center;
+            justify-content: start;
+            line-height: 0;
+            padding: 46px 40px 126px;
+            position: relative;
+            flex-shrink: 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .intro h2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+            color: #717171;
+            font-size: 12px;
+            letter-spacing: 0px;
+            text-transform: uppercase;
+            width: 100%;
+            line-height: 1.5;
+        }
+
+        .intro p {
+            position: relative;
+            flex-shrink: 0;
+            color: #2C2C2C;
+            font-size: 30px;
+            letter-spacing: -0.3px;
+            width: 100%;
+            line-height: 1.3;
+        }
+
+        /* Feature Image */
+        .feature-image {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            height: 750px;
+            align-items: center;
+            justify-content: start;
+            overflow: clip;
+            padding: 0 40px 150px;
+            position: relative;
+            border-radius: 10px;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .feature-image-bg {
+            flex: 1 0 0;
+            flex-grow: 1;
+            min-height: 1px;
+            min-width: 1px;
+            flex-shrink: 0;
+            width: 100%;
+            background: url('./assets/cb8e0b11ff518542f725fce25f5ba8e1205fbdf4.png') center/cover no-repeat;
+        }
+
+        /* Details Section */
+        .details {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            height: 668px;
+            align-items: center;
+            justify-content: start;
+            overflow: visible;
+            padding: 0 40px 150px;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .star-icon {
+            position: relative;
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+        }
+
+        .star-icon img {
+            position: absolute;
+            top: 0;
+            left: 2.45%;
+            right: 2.45%;
+            bottom: 9.55%;
+            display: block;
+            max-width: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .details h3 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            line-height: 1.2;
+            min-width: 100%;
+            position: relative;
+            flex-shrink: 0;
+            color: #2C2C2C;
+            font-size: 40px;
+            text-align: center;
+            letter-spacing: -0.4px;
+            text-transform: uppercase;
+            width: min-content;
+            display: block;
+            margin-bottom: 0;
+        }
+
+        /* Gallery */
+        .gallery {
+            box-sizing: border-box;
+            display: flex;
+            gap: 16px;
+            align-items: start;
+            justify-content: start;
+            overflow-x: auto;
+            overflow-y: clip;
+            padding: 0 40px;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .gallery-card {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px 50px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .gallery-img {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            flex-shrink: 0;
+            width: 540px;
+            height: 540px;
+        }
+
+        .gallery-img-1 {
+            background-image: url('./assets/fecaf620dee2ee30dc48ec6d6aa2f81d24b667b3.png');
+        }
+
+        .gallery-img-2 {
+            background-image: url('./assets/c06677fc746a48595e0cb79435ab14337fe3003e.png');
+        }
+
+        .gallery-img-3-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .gallery-img-3-wrapper {
+            flex: none;
+            transform: rotate(180deg) scaleY(-1);
+        }
+
+        .gallery-img-3 {
+            background-image: url('./assets/d33c2d244ed07c2820450d2c4e562c63be3719c7.png');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+            width: 540px;
+            height: 540px;
+        }
+
+        .gallery-img-4 {
+            background-image: url('./assets/fecaf620dee2ee30dc48ec6d6aa2f81d24b667b3.png');
+        }
+
+        .gallery-text {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 700;
+            justify-content: center;
+            line-height: 1.5;
+            position: relative;
+            flex-shrink: 0;
+            color: #717171;
+            font-size: 12px;
+            text-align: center;
+            white-space: nowrap;
+            letter-spacing: 0px;
+            text-transform: uppercase;
+        }
+
+        .gallery-text p {
+            margin-bottom: 0;
+        }
+
+        /* Agenda */
+        .agenda {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            align-items: center;
+            justify-content: start;
+            padding: 88px 40px;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .agenda-frame {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            align-items: center;
+            justify-content: start;
+            max-width: 920px;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .agenda-title-section {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+            justify-content: start;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .agenda-title {
+            display: flex;
+            gap: 10px;
+            align-items: start;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .agenda-title h2 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            line-height: 0;
+            position: relative;
+            flex-shrink: 0;
+            color: #2C2C2C;
+            font-size: 40px;
+            text-align: center;
+            white-space: nowrap;
+            letter-spacing: -0.4px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .agenda-item {
+            box-sizing: border-box;
+            display: flex;
+            gap: 128px;
+            align-items: start;
+            justify-content: start;
+            overflow: visible;
+            padding: 20px 0 0;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+            border-top: 0.5px solid #2C2C2C;
+        }
+
+        .agenda-time {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            line-height: 0;
+            position: relative;
+            flex-shrink: 0;
+            color: #2C2C2C;
+            font-size: 20px;
+            white-space: nowrap;
+            line-height: 1.5;
+        }
+
+        .agenda-content {
+            flex: 1 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            flex-grow: 1;
+            align-items: start;
+            justify-content: start;
+            line-height: 0;
+            min-height: 1px;
+            min-width: 1px;
+            position: relative;
+            flex-shrink: 0;
+            color: #2C2C2C;
+            font-size: 20px;
+            letter-spacing: 0px;
+        }
+
+        .agenda-content h4 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+            line-height: 1.5;
+        }
+
+        .agenda-content p {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+            line-height: 1.5;
+        }
+
+        /* About */
+        .about {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+            align-items: center;
+            justify-content: start;
+            padding: 0 40px 78px;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .about-banner {
+            aspect-ratio: 1200/600;
+            background: url('./assets/3cc28e8c67315fe2c34bcb5287f1adb8feffb6fe.png') center/cover no-repeat;
+            border-radius: 10px;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .about h2 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 900;
+            line-height: 0;
+            position: relative;
+            flex-shrink: 0;
+            color: #2C2C2C;
+            font-size: 40px;
+            text-align: center;
+            letter-spacing: -0.4px;
+            text-transform: uppercase;
+            width: 100%;
+            line-height: 1.2;
+        }
+
+        .about-text {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            line-height: 1.5;
+            position: relative;
+            flex-shrink: 0;
+            color: #2C2C2C;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: 0px;
+            width: 100%;
+        }
+
+        .about-text p {
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #7AA4AD;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+            align-items: center;
+            justify-content: space-between;
+            overflow: visible;
+            padding: 40px;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .footer-frame {
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+            max-width: 1500px;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .footer-links {
+            display: flex;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 700;
+            gap: 30px;
+            align-items: start;
+            justify-content: start;
+            line-height: 0;
+            position: relative;
+            flex-shrink: 0;
+            color: #2C2C2C;
+            font-size: 12px;
+            letter-spacing: 0px;
+            text-transform: uppercase;
+        }
+
+        .footer-col {
+            line-height: 1.5;
+            position: relative;
+            flex-shrink: 0;
+            width: 293px;
+        }
+
+        .footer-col p {
+            margin-bottom: 0;
+        }
+
+        .social {
+            display: flex;
+            gap: 11.977px;
+            align-items: center;
+            justify-content: start;
+            position: relative;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .social a {
+            display: block;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .social .facebook {
+            height: 15.66px;
+            width: 8.761px;
+        }
+
+        .social .instagram {
+            width: 14.982px;
+            height: 14.982px;
+        }
+
+        .social .tiktok {
+            height: 16px;
+            width: 16.081px;
+        }
+
+        .social .youtube {
+            height: 11.587px;
+            width: 17.721px;
+        }
+
+        .social img {
+            display: block;
+            max-width: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer-wordmark {
+            aspect-ratio: 1200/290;
+            max-height: 362.5px;
+            max-width: 1500px;
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        .footer-wordmark img {
+            display: block;
+            max-width: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
-    <div class="container" data-name="Desktop" data-node-id="22:1611">
-        <!-- Navigation -->
-        <nav data-name="Navigation" data-node-id="22:1612">
-            <a href="#" class="nav-link" data-name="Crest Middle" data-node-id="22:1613">
-                <span>Crest Middle</span>
+    <div class="desktop">
+        <nav>
+            <a href="#">
+                <div>
+                    <p>クレスト中学校</p>
+                </div>
             </a>
-            <a href="#" class="nav-link" data-name="Contact" data-node-id="22:1615">
-                <span>CONTACT US</span>
+            <a href="#">
+                <div>
+                    <p>お問い合わせ</p>
+                </div>
             </a>
         </nav>
-
-        <!-- Header -->
-        <header data-name="Header" data-node-id="22:1617">
-            <div class="header-image" data-name="header image" data-node-id="22:1618">
-                <div class="lantern-main" aria-label="Bright paper lantern with face on it" data-node-id="22:1619"></div>
-                <div class="badge" aria-label="Badge showing event is February 17 from 6-9PM" data-node-id="22:1620">
-                    <svg width="198" height="198" viewBox="0 0 198 198" fill="none">
-                        <circle cx="99" cy="99" r="99" fill="#2C2C2C"/>
-                        <text x="50%" y="45%" text-anchor="middle" fill="#FBEAD6" font-family="Roboto Condensed" font-weight="900" font-size="28" text-transform="uppercase">FEB 17</text>
-                        <text x="50%" y="65%" text-anchor="middle" fill="#FBEAD6" font-family="Roboto Condensed" font-weight="900" font-size="20" text-transform="uppercase">6-9 PM</text>
-                    </svg>
-                </div>
+        
+        <header>
+            <div class="header-image">
+                <div class="lantern-face" aria-label="顔の描かれた明るい紙提灯"></div>
+                <div class="badge" aria-label="2月17日午後6-9時のイベントバッジ"></div>
             </div>
-            
-            <div class="wordmark" data-name="Wordmark" data-node-id="22:1621">
-                <h1 class="sr-only">Paper Lanterns</h1>
-                <svg class="wordmark-svg" viewBox="0 0 1180 210" fill="none">
-                    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="#2C2C2C" font-family="Roboto Condensed" font-weight="900" font-size="140" letter-spacing="-4" text-transform="uppercase">PAPER LANTERNS</text>
-                </svg>
+            <div class="wordmark">
+                <h1>Paper Lanterns</h1>
+                <div class="wordmark-svg">
+                    <img src="./assets/0ad5f97f92fbc9ffc394f8e2d329620e9eb9556d.svg" alt="ペーパーランタンのタイトル">
+                </div>
             </div>
         </header>
-
-        <!-- Main Content -->
-        <main data-name="Main" data-node-id="22:1624">
-            <!-- Intro Section -->
-            <section class="intro" data-name="Intro" data-node-id="22:1625">
-                <h2 data-node-id="22:1626">33rd Annual Lantern Festival</h2>
-                <p data-node-id="22:1627">We invite you to our enchanting festival, where light, creativity, and tradition come together to illuminate the night sky in a breathtaking celebration of culture and artistry.</p>
-            </section>
-
-            <!-- Feature Image -->
-            <div class="feature-image" data-name="Image" data-node-id="22:1628">
-                <div class="feature-image-bg" aria-label="Block print of crowd watching fireworks" data-node-id="22:1629"></div>
+        
+        <main>
+            <div class="intro">
+                <h2>第33回 ランタンフェスティバル</h2>
+                <p>光と創造性、そして伝統が融合し、文化と芸術の息をのむような祝祭で夜空を照らす、魅惑的なフェスティバルへご招待します。</p>
             </div>
-
-            <!-- Event Details -->
-            <section class="details" aria-label="Event Details" data-name="Details" data-node-id="22:1630">
-                <img src="images/star.svg" alt="" class="star-divider" data-node-id="22:1631">
-                <h3 data-node-id="22:1632">
-                    Tuesday, feb 17, 2026<br>
-                    6:00 – 9:00 PM
-                </h3>
+            
+            <div class="feature-image">
+                <div class="feature-image-bg" aria-label="花火を見る群衆の版画"></div>
+            </div>
+            
+            <section class="details" aria-label="イベント詳細">
+                <div class="star-icon">
+                    <img src="./assets/1feaf163e807d491585dcaf98bb670e85d6dfb5b.svg" alt="">
+                </div>
+                <h3>2026年2月17日（火）<br>午後6:00 – 9:00</h3>
                 
-                <img src="images/star.svg" alt="" class="star-divider" data-node-id="22:1633">
-                <h3 data-node-id="22:1634">
-                    Westwood Crest Middle School<br>
-                    2415 Candyland Lane, Los Angeles, CA 90025
-                </h3>
+                <div class="star-icon">
+                    <img src="./assets/1feaf163e807d491585dcaf98bb670e85d6dfb5b.svg" alt="">
+                </div>
+                <h3>ウェストウッド・クレスト中学校<br>2415 キャンディランド・レーン、ロサンゼルス、CA 90025</h3>
                 
-                <img src="images/star.svg" alt="" class="star-divider" data-node-id="22:1635">
-                <h3 data-node-id="22:1636">
-                    food catered by<br>
-                    Henry's Hunan restaurant
-                </h3>
+                <div class="star-icon">
+                    <img src="./assets/1feaf163e807d491585dcaf98bb670e85d6dfb5b.svg" alt="">
+                </div>
+                <h3>ケータリング提供<br>ヘンリーズ湖南レストラン</h3>
             </section>
-
-            <!-- Gallery -->
-            <section class="gallery" data-name="Gallery" data-node-id="22:1637">
-                <div class="gallery-item" aria-label="First out of four paper lantern visuals" data-name="Image 1" data-node-id="22:1638">
-                    <div class="gallery-image gallery-image-1" aria-label="Bright paper lantern with a moon on it" data-node-id="22:1639"></div>
-                    <div class="gallery-caption" data-node-id="22:1640">
-                        <p>Item: 005</p>
-                        <p>Papierlaternen-Fabrik Riethmüller</p>
+            
+            <div class="gallery">
+                <div class="gallery-card" aria-label="4つのランタンビジュアルの1つ目">
+                    <div class="gallery-img gallery-img-1" aria-label="月の描かれた明るい紙提灯"></div>
+                    <div class="gallery-text">
+                        <p>アイテム: 005</p>
+                        <p>リートミュラー製紙ランタン工場</p>
                     </div>
                 </div>
                 
-                <div class="gallery-item" aria-label="Second out of four paper lantern visuals" data-name="Image 2" data-node-id="22:1641">
-                    <div class="gallery-image gallery-image-2" aria-label="Bright paper lantern with face on it" data-node-id="22:1642"></div>
-                    <div class="gallery-caption" data-node-id="22:1643">
-                        <p>Item: 001</p>
-                        <p>Papierlaternen-Fabrik Riethmüller</p>
+                <div class="gallery-card" aria-label="4つのランタンビジュアルの2つ目">
+                    <div class="gallery-img gallery-img-2" aria-label="顔の描かれた明るい紙提灯"></div>
+                    <div class="gallery-text">
+                        <p>アイテム: 001</p>
+                        <p>リートミュラー製紙ランタン工場</p>
                     </div>
                 </div>
                 
-                <div class="gallery-item" aria-label="Third out of four paper lantern visuals" data-name="Image 3" data-node-id="22:1644">
-                    <div class="gallery-image gallery-image-3" aria-label="Bright paper lantern with a landscape on it" data-node-id="22:1645"></div>
-                    <div class="gallery-caption" data-node-id="22:1646">
-                        <p>Item: 002</p>
-                        <p>Papierlaternen-Fabrik Riethmüller</p>
+                <div class="gallery-card" aria-label="4つのランタンビジュアルの3つ目">
+                    <div class="gallery-img-3-container">
+                        <div class="gallery-img-3-wrapper">
+                            <div class="gallery-img-3" aria-label="風景の描かれた明るい紙提灯"></div>
+                        </div>
+                    </div>
+                    <div class="gallery-text">
+                        <p>アイテム: 002</p>
+                        <p>リートミュラー製紙ランタン工場</p>
                     </div>
                 </div>
                 
-                <div class="gallery-item" aria-label="Fourth out of four paper lantern visuals" data-name="Image 4" data-node-id="22:1647">
-                    <div class="gallery-image gallery-image-4" aria-label="Bright paper lantern with a moon on it" data-node-id="22:1648"></div>
-                    <div class="gallery-caption" data-node-id="22:1649">
-                        <p>Item: 005</p>
-                        <p>Papierlaternen-Fabrik Riethmüller</p>
+                <div class="gallery-card" aria-label="4つのランタンビジュアルの4つ目">
+                    <div class="gallery-img gallery-img-4" aria-label="月の描かれた明るい紙提灯"></div>
+                    <div class="gallery-text">
+                        <p>アイテム: 005</p>
+                        <p>リートミュラー製紙ランタン工場</p>
                     </div>
                 </div>
-            </section>
-
-            <!-- Agenda -->
-            <section class="agenda" data-name="Agenda" data-node-id="22:1650">
-                <div class="agenda-container" data-name="Frame" data-node-id="22:1651">
-                    <div class="agenda-title" data-name="Title" data-node-id="22:1652">
-                        <img src="images/star.svg" alt="" class="star-divider" data-node-id="22:1653">
-                        <h2 data-node-id="22:1655">FESTIVAL AGENDA</h2>
-                    </div>
-
-                    <div class="agenda-item" aria-label="Festival Agenda Item 1" data-name="Item 1" data-node-id="22:1656">
-                        <div class="agenda-time" data-node-id="22:1657">5:30 PM</div>
-                        <div class="agenda-content" data-node-id="22:1658">
-                            <h4 data-node-id="22:1659">ARRIVAL</h4>
-                            <p data-node-id="22:1660">Welcome and gather. Enjoy the ambiance as the lanterns are prepared for illumination.</p>
+            </div>
+            
+            <div class="agenda">
+                <div class="agenda-frame">
+                    <div class="agenda-title-section">
+                        <div class="star-icon">
+                            <img src="./assets/1feaf163e807d491585dcaf98bb670e85d6dfb5b.svg" alt="">
+                        </div>
+                        <div class="agenda-title">
+                            <h2>フェスティバルプログラム</h2>
                         </div>
                     </div>
-
-                    <div class="agenda-item" aria-label="Festival Agenda Item 2" data-name="Item 2" data-node-id="22:1661">
-                        <div class="agenda-time" data-node-id="22:1662">7:00 PM</div>
-                        <div class="agenda-content" data-node-id="22:1663">
-                            <h4 data-node-id="22:1664">OPENING CEREMONY</h4>
-                            <p data-node-id="22:1665">Principal Gardella introduces the history and significance of the festival, especially the cultural importance of paper lanterns.</p>
+                    
+                    <section class="agenda-item" aria-label="フェスティバルアジェンダアイテム1">
+                        <div class="agenda-time">午後5:30</div>
+                        <div class="agenda-content">
+                            <h4>到着</h4>
+                            <p>お迎えと集合。ランタンの点灯準備をしながら、雰囲気をお楽しみください。</p>
                         </div>
-                    </div>
-
-                    <div class="agenda-item" aria-label="Festival Agenda Item 3" data-name="Item 3" data-node-id="22:1666">
-                        <div class="agenda-time" data-node-id="22:1667">7:30 PM</div>
-                        <div class="agenda-content" data-node-id="22:1668">
-                            <h4 data-node-id="22:1669">LANTERN LIGHTING</h4>
-                            <p data-node-id="22:1670">Experience the magical illumination of the paper lanterns..</p>
+                    </section>
+                    
+                    <section class="agenda-item" aria-label="フェスティバルアジェンダアイテム2">
+                        <div class="agenda-time">午後7:00</div>
+                        <div class="agenda-content">
+                            <h4>開会式</h4>
+                            <p>ガルデラ校長がフェスティバルの歴史と意義、特にペーパーランタンの文化的重要性について紹介します。</p>
                         </div>
-                    </div>
-
-                    <div class="agenda-item" aria-label="Festival Agenda Item 4" data-name="Item 4" data-node-id="22:1671">
-                        <div class="agenda-time" data-node-id="22:1672">8:30 PM</div>
-                        <div class="agenda-content" data-node-id="22:1673">
-                            <h4 data-node-id="22:1674">WRAP UP</h4>
-                            <p data-node-id="22:1675">Thank you's and closing remarks</p>
+                    </section>
+                    
+                    <section class="agenda-item" aria-label="フェスティバルアジェンダアイテム3">
+                        <div class="agenda-time">午後7:30</div>
+                        <div class="agenda-content">
+                            <h4>ランタン点灯</h4>
+                            <p>ペーパーランタンの幻想的な点灯を体験してください。</p>
                         </div>
-                    </div>
+                    </section>
+                    
+                    <section class="agenda-item" aria-label="フェスティバルアジェンダアイテム4">
+                        <div class="agenda-time">午後8:30</div>
+                        <div class="agenda-content">
+                            <h4>閉会</h4>
+                            <p>感謝の言葉と閉会の挨拶</p>
+                        </div>
+                    </section>
                 </div>
-            </section>
-
-            <!-- About Section -->
-            <section class="about" data-name="About" data-node-id="22:1676">
-                <div class="about-image" aria-label="Lanterns hanging from the ceiling" data-node-id="22:1677"></div>
-                <h2 data-node-id="22:1678">About the PAPER LANTERNS festival</h2>
-                <div class="about-text" data-node-id="22:1679">
-                    <p>Since 1992, Westwood Crest Middle School has proudly hosted its beloved 'Paper Lanterns' event, a cherished tradition woven into the fabric of our school community. Inspired by the rich history of the Chinese Paper Lantern Festival, our event began as a simple gathering, a way to celebrate the beauty and symbolism of these luminous creations.</p>
+            </div>
+            
+            <div class="about">
+                <div class="about-banner" aria-label="天井から吊るされたランタン"></div>
+                <h2>ペーパーランタンフェスティバルについて</h2>
+                <div class="about-text">
+                    <p>1992年より、ウェストウッド・クレスト中学校は、学校コミュニティの伝統として愛されている「ペーパーランタン」イベントを誇りを持って開催しています。中国のランタンフェスティバルの豊かな歴史にインスピレーションを受け、私たちのイベントは、これらの輝く作品の美しさと象徴性を祝うシンプルな集まりとして始まりました。</p>
                     <p>&nbsp;</p>
-                    <p>Over the years, 'Paper Lanterns' has grown into a vibrant celebration, deeply valued by students, staff, and families alike. Each year, we honor the ancient art of lantern-making and the profound meanings they represent: hope, joy, and the shedding of negativity. More than just a festival, 'Paper Lanterns' at Westwood Crest is a testament to cultural awareness, unity, and the enduring power of shared traditions.</p>
+                    <p>年々、「ペーパーランタン」は生徒、スタッフ、家族にとって深く価値ある活気に満ちた祝祭へと成長しました。毎年、私たちはランタン作りの古代芸術と、それが表す深い意味―希望、喜び、そしてネガティブなものの放棄―を称えています。単なるフェスティバルを超えて、ウェストウッド・クレストの「ペーパーランタン」は、文化的認識、団結、そして共有される伝統の永続的な力の証です。</p>
                 </div>
-            </section>
+            </div>
         </main>
-
-        <!-- Footer -->
-        <footer data-name="Footer" data-node-id="22:1680">
-            <div class="footer-content" data-name="Frame" data-node-id="22:1681">
-                <div class="footer-links" data-name="Links" data-node-id="22:1682">
-                    <div class="footer-column" data-node-id="22:1683">
-                        <p>Westwood Crest Middle School</p>
-                        <p>2415 Candyland Lane<br>Los Angeles, CA 90025</p>
+        
+        <footer>
+            <div class="footer-frame">
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <p>ウェストウッド・クレスト中学校<br>
+                        2415 キャンディランド・レーン<br>
+                        ロサンゼルス、CA 90025</p>
                     </div>
-                    <div class="footer-column" data-node-id="22:1684">
-                        <p>PAPER LANTERNS © 2025</p>
-                        <p>hello@figma.com</p>
-                        <p>646.555.1234</p>
+                    <div class="footer-col">
+                        <p>ペーパーランタン © 2025<br>
+                        hello@figma.com<br>
+                        646.555.1234</p>
                     </div>
                 </div>
                 
-                <div class="social-links" data-name="Social" data-node-id="22:1685">
-                    <a href="https://www.facebook.com/figmadesign/" aria-label="Link to Facebook" data-name="Facebook" data-node-id="22:1686">
-                        <svg width="9" height="16" viewBox="0 0 9 16" fill="#2C2C2C">
-                            <path d="M5.5 5.5V3.5C5.5 2.948 5.948 2.5 6.5 2.5H7.5V0H5.5C3.567 0 2 1.567 2 3.5V5.5H0V8H2V16H5.5V8H7.5L8.5 5.5H5.5Z"/>
-                        </svg>
+                <div class="social">
+                    <a href="https://www.facebook.com/figmadesign/" class="facebook" aria-label="Facebookへのリンク">
+                        <img src="./assets/92d89818cf397c78bfc96d5535e8e3964ce02dff.svg" alt="">
                     </a>
-                    <a href="https://www.instagram.com/figma/" aria-label="Link to Instagram" data-name="Instagram" data-node-id="22:1688">
-                        <svg width="15" height="15" viewBox="0 0 15 15" fill="#2C2C2C">
-                            <path d="M7.5 3.5C5.29 3.5 3.5 5.29 3.5 7.5C3.5 9.71 5.29 11.5 7.5 11.5C9.71 11.5 11.5 9.71 11.5 7.5C11.5 5.29 9.71 3.5 7.5 3.5ZM7.5 10C6.12 10 5 8.88 5 7.5C5 6.12 6.12 5 7.5 5C8.88 5 10 6.12 10 7.5C10 8.88 8.88 10 7.5 10Z"/>
-                            <circle cx="11.75" cy="3.25" r="0.75"/>
-                            <path d="M10.5 0H4.5C2.015 0 0 2.015 0 4.5V10.5C0 12.985 2.015 15 4.5 15H10.5C12.985 15 15 12.985 15 10.5V4.5C15 2.015 12.985 0 10.5 0ZM13.5 10.5C13.5 12.156 12.156 13.5 10.5 13.5H4.5C2.844 13.5 1.5 12.156 1.5 10.5V4.5C1.5 2.844 2.844 1.5 4.5 1.5H10.5C12.156 1.5 13.5 2.844 13.5 4.5V10.5Z"/>
-                        </svg>
+                    <a href="https://www.instagram.com/figma/" class="instagram" aria-label="Instagramへのリンク">
+                        <img src="./assets/23d7e02a21bfa97b281bbf7f0bb388315034c48d.svg" alt="">
                     </a>
-                    <a href="https://www.tiktok.com/@figma" aria-label="Link to TikTok" data-name="TikTok" data-node-id="22:1690">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="#2C2C2C">
-                            <path d="M12.5 0H9.5V11C9.5 12.38 8.38 13.5 7 13.5C5.62 13.5 4.5 12.38 4.5 11C4.5 9.62 5.62 8.5 7 8.5V5.5C3.96 5.5 1.5 7.96 1.5 11C1.5 14.04 3.96 16.5 7 16.5C10.04 16.5 12.5 14.04 12.5 11V6C13.5 6.5 14.5 7 16 7V4C14.5 4 13.5 3 12.5 0Z"/>
-                        </svg>
+                    <a href="https://www.tiktok.com/@figma" class="tiktok" aria-label="TikTokへのリンク">
+                        <img src="./assets/415ad6468f9455aab5df4ca7189c4b21b20f7770.svg" alt="">
                     </a>
-                    <a href="https://www.youtube.com/figmadesign" aria-label="Link to YouTube" data-name="Youtube" data-node-id="22:1692">
-                        <svg width="18" height="12" viewBox="0 0 18 12" fill="#2C2C2C">
-                            <path d="M17.63 1.87C17.42 1.07 16.8 0.45 16 0.24C14.61 0 9 0 9 0S3.39 0 2 0.24C1.2 0.45 0.58 1.07 0.37 1.87C0 3.26 0 6 0 6S0 8.74 0.37 10.13C0.58 10.93 1.2 11.55 2 11.76C3.39 12 9 12 9 12S14.61 12 16 11.76C16.8 11.55 17.42 10.93 17.63 10.13C18 8.74 18 6 18 6S18 3.26 17.63 1.87ZM7.2 8.57V3.43L11.88 6L7.2 8.57Z"/>
-                        </svg>
+                    <a href="https://www.youtube.com/figmadesign" class="youtube" aria-label="YouTubeへのリンク">
+                        <img src="./assets/68bd92fcf9ba040401986f7c8af97d16bad928a2.svg" alt="">
                     </a>
                 </div>
             </div>
             
-            <svg class="footer-wordmark" viewBox="0 0 1200 290" fill="none" data-name="Wordmark" data-node-id="22:1694">
-                <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="#2C2C2C" font-family="Roboto Condensed" font-weight="900" font-size="100" letter-spacing="-2" text-transform="uppercase">PAPER LANTERNS</text>
-            </svg>
+            <div class="footer-wordmark">
+                <img src="./assets/bd667d23ddcdcbab9ce961fa459c55f5cd46a30b.svg" alt="ペーパーランタンイベントロゴ">
+            </div>
         </footer>
     </div>
 </body>
